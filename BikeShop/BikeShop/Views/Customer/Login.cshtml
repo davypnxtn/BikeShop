@@ -1,0 +1,14 @@
+﻿@model Model.Customer
+@{
+    ViewData["Title"] = "Login";
+    ViewData["ShoppingBag"] = ViewData["sBagID"];
+}
+    <div class="container-fluid">
+        <div class="row vh-100 justify-content-center align-items-center">
+            <div class="col-12 text-center">
+                <div class="h1">Je bent nu ingelogd als @Html.DisplayFor(model => Model.FirstName) @Html.DisplayFor(model => Model.Name)</div><br />
+                @*<a href="#" onclick="history.go(-1)" class="btn btn-primary">Ok</a>*@
+                <a asp-controller="Product" asp-action="Index" class="btn btn-dark rounded-pill py-2">Ok</a>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Winkelmandje";
+    ViewData["ShoppingBag"] = ViewData["sBagID"];
+}
+<div class="container-fluid">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-12 text-center">
+            <div class="h1">Uw bestelling is onderweg</div><br />
+            <a asp-controller="Product" asp-action="Index" class="btn btn-dark rounded-pill py-2">Ok</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@model Model.Product
+@{
+    ViewData["Title"] = "Product Detail";
+    ViewData["ShoppingBag"] = ViewData["sBagID"];
+    var image = Model.Name + ".jpg";
+}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4 offset-4">
+                 <div class="card border-0 shadow">
+                     <img class="card-img-top img-thumbnail" src="~/images/bikes/@image" />
+                     <div class="card-body">                        
+                         <h5 class="card-title text-center">@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => Model.Name)</h5>
+                         <div class="price text-center">@Html.DisplayNameFor(model => model.Price): € @Html.DisplayFor(model => Model.Price)</div><br />
+                         <div class="text-center">
+                             <form asp-controller="Product" asp-action="Detail" method="post">
+                                 <input asp-for="ProductID" type="hidden" value="@Model.ProductID" />
+                                 <input asp-for="Name" type="hidden" value="@Model.Name" />
+                                 <input asp-for="Price" type="hidden" value="@Model.Price" />
+                                 @Html.DisplayNameFor(model => model.ShoppingItems.First().Quantity): <input type="number" name="aantal" id="aantal" />
+                                 <hr />
+                                 <input type="submit" value="Toevoegen aan winkelmandje" class="btn btn-dark rounded-pill py-2 btn-block" />
+                             </form>
+                             <br />
+                             <a asp-controller="Product" asp-action="Index" class="btn btn-dark rounded-pill py-2 btn-block">Verder winkelen</a>
+                         </div>
+                     </div>
+                 </div>
+            </div>    
+        </div>
+    </div>

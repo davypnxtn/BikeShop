@@ -1,0 +1,22 @@
+﻿body {
+    /*background: url('../images/background/david-marcu-vfun94cuy4o-unsplash.jpg') no-repeat center center fixed ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;*/
+    background-color : azure;
+}
+
+/*.backg {
+    background-image: url('../images/header/header_endura_trail.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+}*/
+
+.price {
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.of{
+    object-fit:cover;
+}

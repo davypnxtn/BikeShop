@@ -1,0 +1,22 @@
+﻿@model Model.Product
+@{
+    ViewData["Title"] = "Product Toegevoegd";
+    ViewData["ShoppingBag"] = ViewData["sBagID"];
+    var image = Model.Name + ".jpg";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4 offset-4">
+            <div class="card border-0 shadow">
+                <img class="card-img-top img-thumbnail" src="~/images/bikes/@image" />
+                <div class="card-body">                   
+                    <h5 class="card-title text-center"> De @Html.DisplayFor(model => Model.Name) is toegevoegd aan uw winkelmandje</h5>
+                    <div class="text-center">
+                        <a asp-controller="Product" asp-action="Index" class="btn btn-dark rounded-pill py-2 btn-block">Verder winkelen</a>
+                        <a asp-controller="ShoppingBag" asp-action="Detail" asp-route-id="@ViewData["sBagID"]" class="btn btn-dark rounded-pill py-2 btn-block">Naar winkelmandje</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿@model List<Model.Product>
+@{
+    ViewData["Title"] = "Products";
+    ViewData["ShoppingBag"] = ViewData["sBagID"];
+}
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            var image = item.Name + ".jpg";
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow mb-4">
+                    <img class="card-img-top img-thumbnail" src="~/images/bikes/@image" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <div class="price text-center">€ @Html.DisplayFor(modelItem => item.Price)</div><br />
+                        <div class="text-center">
+                            <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ProductID" class="btn btn-dark rounded-pill py-2 btn-block">Bestel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

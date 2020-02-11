@@ -1,0 +1,73 @@
+﻿@model Model.ViewModel.ShoppingBagDetailViewModel
+@{ 
+    ViewData["Title"] = "Winkelmandje";
+    ViewData["ShoppingBag"] = ViewData["sBagID"];
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-3 text-uppercase">@Html.DisplayNameFor(model => model.ShoppingItems[0].Product.Name)</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">@Html.DisplayNameFor(model => model.ShoppingItems[0].Product.Price)</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">@Html.DisplayNameFor(model => model.ShoppingItems[0].Quantity)</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">@Html.DisplayNameFor(model => model.ShoppingItems[0].SubTotaal)</div> 
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Verwijder</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ShoppingItems)
+                         {
+                            var image = item.Product.Name + ".jpg";
+                            <tr>
+                                <th scope="row" class="border-0">
+                                    <div class="p-2">
+                                        <img src="~/images/bikes/@image" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                        <div class="ml-3 d-inline-block align-middle">
+                                            <h5 class="mb-0"> <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Product.ProductID" class="text-dark d-inline-block align-middle">@Html.DisplayFor(modelItem => item.Product.Name)</a></h5>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td class="border-0 align-middle"><strong>€ @Html.DisplayFor(modelItem => item.Product.Price)</strong></td>
+                                <td class="border-0 align-middle"><strong>@Html.DisplayFor(modelItem => item.Quantity)</strong></td>
+                                <td class="border-0 align-middle"><strong>€ @Html.DisplayFor(modelItem => item.SubTotaal)</strong></td>
+                                <td class="border-0 align-middle"><a asp-controller="ShoppingItem" asp-action="Delete" asp-route-id="@item.ShoppingItemID" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row py-5 p-4 bg-white rounded shadow-sm">      
+        <div class="col-lg-6 offset-3">
+            <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Overzicht van uw bestelling</div>
+            <div class="p-4">
+                <p class="font-italic mb-4">Vanaf 3 items geniet u van 5% korting, vanaf 6 items geniet u van 10% korting</p>
+                <ul class="list-unstyled mb-4">
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Bestelling @Html.DisplayNameFor(model => Model.SubTotaal) </strong><strong>€ @Html.DisplayFor(model => Model.SubTotaal)</strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Uw @Html.DisplayNameFor(model => Model.Korting)</strong><strong>€ @Html.DisplayFor(model => Model.Korting)</strong></li>
+                    <li class="d-flex justify-content-between py-3 border-bottom">
+                        <strong class="text-muted">@Html.DisplayNameFor(model => Model.Totaal)</strong>
+                        <h5 class="font-weight-bold">€ @Html.DisplayFor(model => Model.Totaal)</h5>
+                    </li>
+                </ul>
+                <a asp-controller="Product" asp-action="Index" class="btn btn-dark rounded-pill py-2 btn-block">Verder winkelen</a>
+                <a asp-controller="ShoppingBag" asp-action="ConfirmOrder" class="btn btn-dark rounded-pill py-2 btn-block">Bestelling bevestigen</a>
+            </div>
+        </div>
+    </div>
+</div>
+ 

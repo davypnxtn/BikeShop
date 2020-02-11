@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <title>@ViewData["Title"] - BikeShop</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-4 shadow w-100">
+        <div class="navbar-brand">BikeShop</div>
+        <div class="navbar-brand">Alles voor uw fietsplezier!</div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="Product" asp-action="Index">
+                        Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customer" asp-action="Login" asp-route-id="1">Inloggen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="ShoppingBag" asp-action="Detail" asp-route-id="@ViewData["ShoppingBag"]">Winkelmandje</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
